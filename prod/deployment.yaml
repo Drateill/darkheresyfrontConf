@@ -16,4 +16,4 @@ spec:
       - name: darkheresyfront
         image: drateil/darkheresyfront:latest
         ports:
-        - containerPort: 8080
+        - containerPort: 3000
