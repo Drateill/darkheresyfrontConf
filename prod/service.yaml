@@ -6,8 +6,8 @@ spec:
   selector:
     app: darkheresyfront
   ports:
-  - port: 3000
+  - port: 8080
     protocol: TCP
     targetPort: 3000
-  type: LoadBalancer
+  type: NodePort
   
