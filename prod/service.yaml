@@ -6,7 +6,7 @@ spec:
   selector:
     app: darkheresyfront
   ports:
-  - port: 8080
+  - port: 8081
     protocol: TCP
     targetPort: 3000
   type: NodePort
