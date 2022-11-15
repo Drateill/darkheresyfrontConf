@@ -23,7 +23,7 @@ spec:
       - image: mongo
         name: mongo
         resources :
-        args: ["--dbpath","/tmp/db"]
+        args: ["--dbpath","/data/db"]
         env:
         - name: MONGO_INITDB_ROOT_USERNAME
           valueFrom:
