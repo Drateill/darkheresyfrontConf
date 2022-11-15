@@ -23,3 +23,5 @@ spec:
           value: 'dummy'
         - name: mongo-client_INITDB_ROOT_PASSWORD
           value: 'dummy'
+        resources :
+          

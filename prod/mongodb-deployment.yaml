@@ -18,6 +18,7 @@ spec:
       containers:
       - image: mongo
         name: mongo
+        resources :
         args: ["--dbpath","/data/db"]
         livenessProbe:
           exec:
@@ -61,3 +62,4 @@ spec:
       - name: "mongo-data-dir"
         persistentVolumeClaim:
           claimName: "pvc"
+          
