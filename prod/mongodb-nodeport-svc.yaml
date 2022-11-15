@@ -5,6 +5,7 @@ metadata:
     app: mongo
   name: mongo-nodeport-svc
 spec:
+  user: "nfsnobody"
   ports:
   - port: 27017
     protocol: TCP
