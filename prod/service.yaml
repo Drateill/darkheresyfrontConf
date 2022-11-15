@@ -11,4 +11,17 @@ spec:
     protocol: TCP
     targetPort: 80
   type: NodePort
-  
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: darkheresyback-service
+spec:
+  selector:
+    app: darkheresyback
+  ports:
+  - nodePort: 30472
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  type: NodePort

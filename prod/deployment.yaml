@@ -21,3 +21,26 @@ spec:
           limits:
             memory: "128Mi"
             cpu: "500m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: darkheresyback
+spec:
+  selector:
+    matchLabels:
+      app: darkheresyback
+  template:
+    metadata:
+      labels:
+        app: darkheresyback
+    spec:
+      containers:
+      - name: darkheresyback
+        image: drateil/darkheresyback
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3080
