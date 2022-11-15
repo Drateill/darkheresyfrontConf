@@ -31,11 +31,3 @@ spec:
             secretKeyRef:
               name: mongo-creds
               key: password
-        volumeMounts:
-        - name: "mongo-data-dir"
-          mountPath: "/data/db"
-      volumes:
-      - name: "mongo-data-dir"
-        persistentVolumeClaim:
-          claimName: "pvc"
-          
