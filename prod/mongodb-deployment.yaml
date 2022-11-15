@@ -31,3 +31,10 @@ spec:
             secretKeyRef:
               name: mongo-creds
               key: password
+        volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: task-pv-storage
+    volumes:
+    - name: task-pv-storage
+      persistentVolumeClaim:
+        claimName: task-pv-claim
