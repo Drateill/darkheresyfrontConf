@@ -15,6 +15,10 @@ spec:
       labels:
         app: mongo
     spec:
+      volumes:
+        - name: task-pv-storage
+          persistentVolumeClaim:
+            claimName: task-pv-claim
       containers:
       - image: mongo
         name: mongo
@@ -34,7 +38,3 @@ spec:
         volumeMounts:
         - mountPath: "/usr/share/nginx/html"
           name: task-pv-storage
-    volumes:
-    - name: task-pv-storage
-      persistentVolumeClaim:
-        claimName: task-pv-claim
