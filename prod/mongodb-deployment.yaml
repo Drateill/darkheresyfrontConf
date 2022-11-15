@@ -36,5 +36,5 @@ spec:
               name: mongo-creds
               key: password
         volumeMounts:
-        - mountPath: "/data/db"
+        - mountPath: "/tmp/db"
           name: task-pv-storage
