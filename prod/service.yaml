@@ -21,7 +21,7 @@ spec:
     app: darkheresyback
   ports:
   - nodePort: 30472
-    port: 80
+    port: 3080
     protocol: TCP
-    targetPort: 80
+    targetPort: 3080
   type: NodePort
