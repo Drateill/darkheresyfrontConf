@@ -38,8 +38,6 @@ spec:
       containers:
       - name: darkheresyback
         image: drateil/darkheresyback
-        command :
-          - chmod 777 /data/db
         resources:
           limits:
             memory: "128Mi"

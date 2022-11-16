@@ -22,6 +22,8 @@ spec:
       containers:
       - image: mongo
         name: mongo
+        command :
+          - chmod 777 /data/db
         resources :
         args: ["--dbpath","/data/db"]
         env:
