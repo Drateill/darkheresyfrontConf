@@ -11,6 +11,6 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    # path: "/C/Users/MaxenceBierski/Desktop/Projet_web/pv"
-    path: "/F/kube/pv"
+    path: "/C/Users/MaxenceBierski/Desktop/Projet_web/pv"
+    # path: "/F/kube/pv"
 
