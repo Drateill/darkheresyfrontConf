@@ -39,4 +39,4 @@ spec:
               key: password
         volumeMounts:
         - mountPath: "/data/db"
-          name: task-pv-storage
+          name: pv-pc-perso
