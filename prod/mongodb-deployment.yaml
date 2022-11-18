@@ -16,9 +16,9 @@ spec:
         app: mongo
     spec:
       volumes:
-        - name: task-pv-storage
+        - name: pv-pc-perso
           persistentVolumeClaim:
-            claimName: task-pv-claim
+            claimName: pv-pc-perso
       containers:
       - image: mongo
         name: mongo
