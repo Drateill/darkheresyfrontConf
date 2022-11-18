@@ -27,7 +27,7 @@ spec:
             cpu: "500m"
         volumeMounts:
         - mountPath: "/tmp"
-          name: pv-pc-perso
+          name: task-pv-claim
 ---
 apiVersion: apps/v1
 kind: Deployment
