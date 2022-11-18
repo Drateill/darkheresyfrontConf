@@ -12,5 +12,5 @@ spec:
     - ReadWriteOnce
   hostPath:
     # path: "/mnt/c/Users/MaxenceBierski/Desktop/Projet_web/pv"
-    path: "/F/kube/pv"
+    path: "/mnt/f/kube/pv"
 
