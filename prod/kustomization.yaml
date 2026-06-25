@@ -8,7 +8,7 @@ images:
 - name: drateil/darkheresyback
   newTag: sha-67a3bc8
 - name: drateil/dhfrontnginx
-  newTag: latest
+  newTag: sha-67a3bc8
 
   # Namespace
   # Config & Secrets
