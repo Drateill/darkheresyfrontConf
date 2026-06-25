@@ -1,0 +1,46 @@
+# Prérequis : un Ingress Controller installé sur le cluster
+#   kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.1/deploy/static/provider/cloud/deploy.yaml
+#
+# Remplacer les hostnames ci-dessous par vos vrais domaines.
+#
+# ATTENTION : l'image frontend drateil/dhfrontnginx a l'URL de l'API
+# compilée en dur (REACT_APP_APIADRESS). Si l'API change de domaine,
+# il faut reconstruire l'image avec la nouvelle valeur.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: darkheresy-ingress
+  namespace: darkheresy
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+    # Décommenter si cert-manager est installé pour TLS automatique :
+    # cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: dh.drateil.ovh
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: darkheresyfront-service
+            port:
+              number: 80
+  - host: api.dh.drateil.ovh
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: darkheresyback-service
+            port:
+              number: 3080
+  # Décommenter pour activer TLS (cert-manager requis) :
+  # tls:
+  # - hosts:
+  #   - dh.drateil.ovh
+  #   - api.dh.drateil.ovh
+  #   secretName: darkheresy-tls
