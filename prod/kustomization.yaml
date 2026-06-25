@@ -6,7 +6,7 @@ namespace: darkheresy
 # Tags mis à jour automatiquement par la CI (ci-api.yml / ci-front.yml)
 images:
 - name: drateil/darkheresyback
-  newTag: latest
+  newTag: sha-6a7f3bd
 - name: drateil/dhfrontnginx
   newTag: sha-6a7f3bd
 
