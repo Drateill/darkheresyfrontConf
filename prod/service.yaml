@@ -2,26 +2,26 @@ apiVersion: v1
 kind: Service
 metadata:
   name: darkheresyfront-service
+  namespace: darkheresy
 spec:
   selector:
     app: darkheresyfront
   ports:
-  - nodePort: 30471
-    port: 80
+  - port: 80
     protocol: TCP
     targetPort: 80
-  type: NodePort
+  type: ClusterIP
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: darkheresyback-service
+  namespace: darkheresy
 spec:
   selector:
     app: darkheresyback
   ports:
-  - nodePort: 30472
-    port: 3080
+  - port: 3080
     protocol: TCP
     targetPort: 3080
-  type: NodePort
+  type: ClusterIP

@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: darkheresy
+  namespace: argocd
+  annotations:
+    # Repo source code (api + front) : https://github.com/Drateill/darkheresy-app
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/Drateill/darkheresyfrontConf.git
+    targetRevision: HEAD
+    path: prod
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: darkheresy
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+    - ServerSideApply=true
+    retry:
+      limit: 3
+      backoff:
+        duration: 10s
+        maxDuration: 3m
+        factor: 2

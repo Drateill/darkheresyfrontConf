@@ -5,23 +5,23 @@ namespace: darkheresy
 
 # Tags mis à jour automatiquement par la CI (ci-api.yml / ci-front.yml)
 images:
-- name: drateil/darkheresyback
-  newTag: sha-6a7f3bd
-- name: drateil/dhfrontnginx
-  newTag: sha-6a7f3bd
+  - name: drateil/dhfrontnginx
+    newTag: latest
+  - name: drateil/darkheresyback
+    newTag: latest
 
-  # Namespace
-  # Config & Secrets
-  # MongoDB (in-cluster)
-  # Application
 resources:
-- namespace.yaml
-- configmap.yaml
-- secrets.yaml
-- mongo-pv.yaml
-- mongodb-pvc.yaml
-- mongodb-deployment.yaml
-- mongodb-nodeport-svc.yaml
-- deployment.yaml
-- service.yaml
-- ingress.yaml
+  # Namespace
+  - namespace.yaml
+  # Config & Secrets
+  - configmap.yaml
+  - secrets.yaml
+  # MongoDB (in-cluster)
+  - mongo-pv.yaml
+  - mongodb-pvc.yaml
+  - mongodb-deployment.yaml
+  - mongodb-nodeport-svc.yaml
+  # Application
+  - deployment.yaml
+  - service.yaml
+  - ingress.yaml

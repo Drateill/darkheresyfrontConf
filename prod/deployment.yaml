@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: darkheresyfront
+  namespace: darkheresy
 spec:
   selector:
     matchLabels:
@@ -12,31 +13,29 @@ spec:
       labels:
         app: darkheresyfront
     spec:
-      volumes:
-        - name: task-pv-storage
-          persistentVolumeClaim:
-            claimName: task-pv-claim
       containers:
       - name: darkheresyfront
         image: drateil/dhfrontnginx
         ports:
         - containerPort: 80
         resources:
+          requests:
+            memory: "64Mi"
+            cpu: "100m"
           limits:
             memory: "128Mi"
             cpu: "500m"
-        volumeMounts:
-        - mountPath: "/tmp"
-          name: task-pv-storage
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: darkheresyback
+  namespace: darkheresy
 spec:
   selector:
     matchLabels:
       app: darkheresyback
+  replicas: 1
   template:
     metadata:
       labels:
@@ -45,9 +44,43 @@ spec:
       containers:
       - name: darkheresyback
         image: drateil/darkheresyback
+        ports:
+        - containerPort: 3080
         resources:
+          requests:
+            memory: "64Mi"
+            cpu: "100m"
           limits:
             memory: "128Mi"
             cpu: "500m"
-        ports:
-        - containerPort: 3080
+        env:
+        - name: PORT
+          valueFrom:
+            configMapKeyRef:
+              name: darkheresy-api-config
+              key: PORT
+        - name: NODE_ENV
+          valueFrom:
+            configMapKeyRef:
+              name: darkheresy-api-config
+              key: NODE_ENV
+        - name: DB_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: darkheresy-api-config
+              key: DB_NAME
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: darkheresy-api-secret
+              key: DB_USER
+        - name: DB_PWD
+          valueFrom:
+            secretKeyRef:
+              name: darkheresy-api-secret
+              key: DB_PWD
+        - name: DB_URI
+          valueFrom:
+            secretKeyRef:
+              name: darkheresy-api-secret
+              key: DB_URI
